@@ -5,5 +5,5 @@ from . import views
 app_name = 'logsapp'
 
 urlpatterns = [
-    path('getLogs/', views.LogsViewSet.list),
+    path('storeLogs/', views.LogsViewSet.as_view({'post': 'storeLogs'}), name='store_logs')
 ]

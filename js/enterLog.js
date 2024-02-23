@@ -1,15 +1,17 @@
 function enterLog() {
     let name = $("#login-name").val();
-    let password = $("#login-password").val();
 
-    // alert(name + password);
+    let title = name + " logged in";
+    let desc = name + " logged in";
+
+    alert(title);
 
     $.ajax({
         type: "post",
-        url: '127.0.0.1/ajax/getLogs/',
+        url: '127.0.0.1/ajax/storeLogs/',
         data: {
-            name: name,
-            password: password
+             title: title,
+             desc: desc,
         }
     })
 }
