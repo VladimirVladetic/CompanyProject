@@ -7,11 +7,13 @@ function showSpinner() {
 
     // let id = document.getElementById("id-number").value;
 
-    let id = $("#id-number");
+    let id = $("#id-number").val();
 
     setTimeout(function() {
         hideSpinner();
     }, 5000);
+
+    // alert(id);
 
     $.ajax({
         type: 'post',

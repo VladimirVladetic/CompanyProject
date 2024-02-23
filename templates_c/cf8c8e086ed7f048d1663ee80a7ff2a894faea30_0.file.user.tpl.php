@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 08:57:35
+/* Smarty version 4.3.4, created on 2024-02-23 09:37:25
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d84fefcbdb25_10376756',
+  'unifunc' => 'content_65d85945143b58_41196299',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cf8c8e086ed7f048d1663ee80a7ff2a894faea30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\user.tpl',
-      1 => 1708675009,
+      1 => 1708677395,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,18 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d84fefcbdb25_10376756 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65d85945143b58_41196299 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/users.css">
+        <?php echo '<script'; ?>
+ src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
+>
     <?php echo '<script'; ?>
- src="https://code.jquery.com/jquery-3.6.4.min.js"><?php echo '</script'; ?>
+ src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  src="./js/changeCompany.js" defer><?php echo '</script'; ?>
@@ -40,46 +43,49 @@ function content_65d84fefcbdb25_10376756 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container">
     <img class="margins-needed" src="./images/Atos-Symbol.png" alt="Atos logo"  width="200" height="100"> 
     <table>
+
+        <div id="user-holder" data-value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+"></div>
+
         <?php if ($_smarty_tpl->tpl_vars['sessionrole']->value == "admin") {?>
             <form class="margins-needed" id="update-user-form" method="post" action="http://localhost/smarty-4.3.4/CompanyProject/user.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-" data-user-id="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 ">
-            <tr><td>Name: <input id="info-name" type="text" name="name" placeholder="Enter your name." <?php if ((isset($_smarty_tpl->tpl_vars['name']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+                <tr><td>Name: <input id="info-name" type="text" name="name" placeholder="Enter your name." <?php if ((isset($_smarty_tpl->tpl_vars['name']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 " <?php }?>></td></tr>
-            <tr><td>Surname: <input id="info-surname" type="text" name="surname" placeholder="Enter your surname."<?php if ((isset($_smarty_tpl->tpl_vars['surname']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
+                <tr><td>Surname: <input id="info-surname" type="text" name="surname" placeholder="Enter your surname."<?php if ((isset($_smarty_tpl->tpl_vars['surname']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
 " <?php }?>></td></tr>
-            <tr><td>Year of birth: <input id="info-yearofbirth" type="number" name="yearofbirth" placeholder="Enter your year of birth."<?php if ((isset($_smarty_tpl->tpl_vars['yearofbirth']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['yearofbirth']->value;?>
+                <tr><td>Year of birth: <input id="info-yearofbirth" type="number" name="yearofbirth" placeholder="Enter your year of birth."<?php if ((isset($_smarty_tpl->tpl_vars['yearofbirth']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['yearofbirth']->value;?>
 " <?php }?>></td></tr>
-            <tr><td>Password: <input id="info-password" type="text" name="password" placeholder="Enter your password."<?php if ((isset($_smarty_tpl->tpl_vars['password']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['password']->value;?>
+                <tr><td>Password: <input id="info-password" type="text" name="password" placeholder="Enter your password."<?php if ((isset($_smarty_tpl->tpl_vars['password']->value))) {?> value="<?php echo $_smarty_tpl->tpl_vars['password']->value;?>
 " <?php }?>></td></tr>
+                <tr><td>Company: <?php if ((isset($_smarty_tpl->tpl_vars['companyname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['companyname']->value;?>
+ <?php }?></td></tr>
+                <tr><td><?php if ((isset($_smarty_tpl->tpl_vars['role']->value))) {?> Role: <?php echo $_smarty_tpl->tpl_vars['role']->value;?>
+ <?php }?> </td></tr>
+                <tr><td><button id="update-info-button">Update user information</button></td></tr>
+            </form>
+            <tr><td><button onclick="openChangeCompanyPopup()">Change company</button></td></tr>
+            <form class="margins-needed" id="delete-this-user" method="post" action="http://localhost/smarty-4.3.4/CompanyProject/user.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+">
+                <tr><td><input type='submit' name='deleteuserbtn' value="Delete user"/></td></tr>
+            </form>
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['sessionrole']->value == "user") {?>
+            <tr><td>Name: <?php if ((isset($_smarty_tpl->tpl_vars['name']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+ <?php }?></td></tr>
+            <tr><td>Surname: <?php if ((isset($_smarty_tpl->tpl_vars['surname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
+ <?php }?></td></tr>
+            <tr><td>Year of birth: <?php if ((isset($_smarty_tpl->tpl_vars['yearofbirth']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['yearofbirth']->value;?>
+ <?php }?></td></tr>
+            <tr><td>Password: Hidden</td></tr>
             <tr><td>Company: <?php if ((isset($_smarty_tpl->tpl_vars['companyname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['companyname']->value;?>
  <?php }?></td></tr>
             <tr><td><?php if ((isset($_smarty_tpl->tpl_vars['role']->value))) {?> Role: <?php echo $_smarty_tpl->tpl_vars['role']->value;?>
  <?php }?> </td></tr>
-            <tr><td><button id="update-info-button">Update user information</button></td></tr>
-            </form>
-            <tr><td><button onclick="openChangeCompanyPopup()">Change company</button></td></tr>
-        <form class="margins-needed" id="delete-this-user" method="post" action="http://localhost/smarty-4.3.4/CompanyProject/user.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-">
-            <tr><td><input type='submit' name='deleteuserbtn' value="Delete user"/></td></tr>
-        </form>
-        <?php }?>
-        <?php if ($_smarty_tpl->tpl_vars['sessionrole']->value == "user") {?>
-        <tr><td>Name: <?php if ((isset($_smarty_tpl->tpl_vars['name']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
- <?php }?></td></tr>
-        <tr><td>Surname: <?php if ((isset($_smarty_tpl->tpl_vars['surname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
- <?php }?></td></tr>
-        <tr><td>Year of birth: <?php if ((isset($_smarty_tpl->tpl_vars['yearofbirth']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['yearofbirth']->value;?>
- <?php }?></td></tr>
-        <tr><td>Password: Hidden</td></tr>
-        <tr><td>Company: <?php if ((isset($_smarty_tpl->tpl_vars['companyname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['companyname']->value;?>
- <?php }?></td></tr>
-        <tr><td><?php if ((isset($_smarty_tpl->tpl_vars['role']->value))) {?> Role: <?php echo $_smarty_tpl->tpl_vars['role']->value;?>
- <?php }?> </td></tr>
         <?php }?>
             <form class="margins-needed" id="go-to-userlist" method="post" action="userList.php"> 
             <tr><td><input type='submit' name='userlist' value='Go to user list'/></td></tr>
-        </form>
+            </form>
     </table>
     </div>
 

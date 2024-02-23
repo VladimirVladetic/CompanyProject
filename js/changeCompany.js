@@ -1,11 +1,11 @@
 function openChangeCompanyPopup() {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("popup").style.display = "block";
+    // document.getElementById("overlay").style.display = "block";
+    // document.getElementById("popup").style.display = "block";
 
-    // let overlay = $(".overlay");
-    // overlay.style.display = "block";
-    // let popup = $(".popup");
-    // popup.style.display = "block";
+    let overlay = $(".overlay");
+    overlay.style.display = "block";
+    let popup = $(".popup");
+    popup.style.display = "block";
 }
 
 function closePopup() {
@@ -22,8 +22,8 @@ function submitChange() {
     //let companyName = document.getElementById("dropdown").value;
     //let id = document.getElementById("update-user-form").getAttribute("data-user-id");
     
-    let companyName = $("#dropdown");
-    let id = $("#data-user-id");
+    let companyName = $('#dropdown option:selected').val();
+    let id = $('#user-holder').attr("data-value");
 
     // alert("Selected value: " + companyName + id);
 
