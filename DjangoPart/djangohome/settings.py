@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'djangohome.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': BASE_DIR / 'companydb',
+        'NAME': 'companydb',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
     }
 }
 
