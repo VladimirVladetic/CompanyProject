@@ -2,6 +2,8 @@ from django.urls import path
 
 from . import views
 
-urlpatterns = [
+app_name = 'logsapp'
 
+urlpatterns = [
+    path('getLogs/', views.LogsViewSet.list),
 ]

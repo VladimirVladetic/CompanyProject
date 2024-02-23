@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 08:42:37
+/* Smarty version 4.3.4, created on 2024-02-23 11:46:41
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d84c6d9589f7_46643500',
+  'unifunc' => 'content_65d8779179a3e8_95617730',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a70fe0231a3571fc2eaa49850d9e479d44d3a04d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\index.tpl',
-      1 => 1705907428,
+      1 => 1708685193,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d84c6d9589f7_46643500 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65d8779179a3e8_95617730 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/basic.css">
+    <?php echo '<script'; ?>
+ src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="./js/enterLog.js" defer><?php echo '</script'; ?>
+>
    
     <title>Login Page</title>
 </head>
@@ -39,7 +48,7 @@ function content_65d84c6d9589f7_46643500 (Smarty_Internal_Template $_smarty_tpl)
         <form id="login-form" method="post" action="index.php" class="login-form-container">
             <input id="login-name" type="text" name="name" placeholder="Enter your name."/>
             <input id="login-password" type="password" name="password" placeholder="Enter your password."/>
-            <input id="login-button" type="submit" name="loginbtn" value="Login"/>
+            <input id="login-button" type="submit" name="loginbtn" value="Login" onclick="enterLog()"/>
         </form>
 
     </div>
