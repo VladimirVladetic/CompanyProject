@@ -1,21 +1,11 @@
 function openChangeCompanyPopup() {
-    // document.getElementById("overlay").style.display = "block";
-    // document.getElementById("popup").style.display = "block";
-
-    let overlay = $(".overlay");
-    overlay.style.display = "block";
-    let popup = $(".popup");
-    popup.style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("popup").style.display = "block";
 }
 
 function closePopup() {
-    // document.getElementById("overlay").style.display = "none";
-    // document.getElementById("popup").style.display = "none";
-
-    let overlay = $(".overlay");
-    overlay.style.display = "none";
-    let popup = $(".popup");
-    popup.style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("popup").style.display = "none";
 }
 
 function submitChange() {
