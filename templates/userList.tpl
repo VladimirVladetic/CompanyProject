@@ -29,9 +29,9 @@
                     {$companyname = $company.name}
                 {/if}
             {/foreach}
-                {* <td><a href="http://localhost/smarty-4.3.4/smartytest/user.php?id={$user.id}">{$user.id}</td>  *}
-                <td><a href="http://localhost/smarty-4.3.4/smartytest/user.php?id={$user.id}">{$user.name}</td> 
-                <td><a href="http://localhost/smarty-4.3.4/smartytest/user.php?id={$user.id}">{$user.surname}</td> 
+                {* <td><a href="http://localhost/smarty-4.3.4/CompanyProject/user.php?id={$user.id}">{$user.id}</td>  *}
+                <td><a href="http://localhost/smarty-4.3.4/CompanyProject/user.php?id={$user.id}">{$user.name}</td> 
+                <td><a href="http://localhost/smarty-4.3.4/CompanyProject/user.php?id={$user.id}">{$user.surname}</td> 
                 <td>{$user.yearofbirth}</td> 
                 <td>{$companyname}</td>
                 {if $sessionrole=="admin"}<td><input type="checkbox" form="delete-selected-users" name="checkbox{$user.id}"/></td>{/if}

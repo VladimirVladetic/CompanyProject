@@ -1,9 +1,9 @@
 function showSpinner() {
 
-    // document.querySelector(".spinner-container").style.display = "flex";
+    document.querySelector(".spinner-container").style.display = "flex";
 
-    let spinnercontainer = $(".spinner-container");
-    spinnercontainer.style.display = "flex";
+    // let spinnercontainer = $(".spinner-container");
+    // spinnercontainer.style.display = "flex";
 
     // let id = document.getElementById("id-number").value;
 
@@ -31,8 +31,8 @@ function showSpinner() {
 }
 
 function hideSpinner() {
-    // document.querySelector(".spinner-container").style.display = "none";
+    document.querySelector(".spinner-container").style.display = "none";
 
-    let spinnercontainer = $(".spinner-container");
-    spinnercontainer.style.display = "none";
+    // let spinnercontainer = $(".spinner-container");
+    // spinnercontainer.style.display = "none";
 }

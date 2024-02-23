@@ -14,7 +14,7 @@
     <img class="margins-needed" src="./images/Atos-Symbol.png" alt="Atos logo"  width="200" height="100"> 
     <table>
         {if $sessionrole=="admin"}
-            <form class="margins-needed" id="update-user-form" method="post" action="http://localhost/smarty-4.3.4/smartytest/user.php?id={$id}" data-user-id="{$id}">
+            <form class="margins-needed" id="update-user-form" method="post" action="http://localhost/smarty-4.3.4/CompanyProject/user.php?id={$id}" data-user-id="{$id}">
             <tr><td>Name: <input id="info-name" type="text" name="name" placeholder="Enter your name." {if isset($name)} value="{$name}" {/if}></td></tr>
             <tr><td>Surname: <input id="info-surname" type="text" name="surname" placeholder="Enter your surname."{if isset($surname)} value="{$surname}" {/if}></td></tr>
             <tr><td>Year of birth: <input id="info-yearofbirth" type="number" name="yearofbirth" placeholder="Enter your year of birth."{if isset($yearofbirth)} value="{$yearofbirth}" {/if}></td></tr>
@@ -24,7 +24,7 @@
             <tr><td><button id="update-info-button">Update user information</button></td></tr>
             </form>
             <tr><td><button onclick="openChangeCompanyPopup()">Change company</button></td></tr>
-        <form class="margins-needed" id="delete-this-user" method="post" action="http://localhost/smarty-4.3.4/smartytest/user.php?id={$id}">
+        <form class="margins-needed" id="delete-this-user" method="post" action="http://localhost/smarty-4.3.4/CompanyProject/user.php?id={$id}">
             <tr><td><input type='submit' name='deleteuserbtn' value="Delete user"/></td></tr>
         </form>
         {/if}

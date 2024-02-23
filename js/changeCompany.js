@@ -1,11 +1,11 @@
 function openChangeCompanyPopup() {
-    // document.getElementById("overlay").style.display = "block";
-    // document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("popup").style.display = "block";
 
-    let overlay = $(".overlay");
-    overlay.style.display = "block";
-    let popup = $(".popup");
-    popup.style.display = "block";
+    // let overlay = $(".overlay");
+    // overlay.style.display = "block";
+    // let popup = $(".popup");
+    // popup.style.display = "block";
 }
 
 function closePopup() {
