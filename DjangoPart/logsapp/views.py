@@ -24,7 +24,22 @@ class LogsViewSet(viewsets.ViewSet):
     def storeLogs(self, request):
         title = request.data.get('title')
         desc = request.data.get('desc')
+
+        print(title)
+        print(desc)
+
+        if title is None or title == "" or desc is None or desc == "":
+            return Response({"error": "Title and desc are required."}, status=status.HTTP_400_BAD_REQUEST)
+        
         log = Logs(title=title, desc=desc)
         log.save()
-        serializer = LogsSerializer(data=request.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        # serializer = LogsSerializer(data=request.data)
+        # if not serializer.is_valid():
+        #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        # return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(status=status.HTTP_200_OK)
+
+        

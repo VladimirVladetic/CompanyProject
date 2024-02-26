@@ -11,7 +11,13 @@ class Logs(models.Model):
         return self.title
     
     def __init__(self, title, desc):
+        super(Logs, self).__init__()
         self.title = title
         self.desc = desc
         self.time = datetime.now()
+
+    @classmethod
+    def create(cls, title, desc):
+        log = Logs(title=title, desc=desc)
+        return log
         
