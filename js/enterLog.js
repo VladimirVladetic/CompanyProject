@@ -1,14 +1,12 @@
 function enterLog() {
     let name = $("#login-name").val();
 
-    let title = name + " logged in";
+    let title = "Login information";
     let desc = name + " logged in";
-
-    alert(title);
 
     $.ajax({
         type: "post",
-        url: '127.0.0.1/ajax/storeLogs/',
+        url: 'http://127.0.0.1:8000/logs/',
         data: {
              title: title,
              desc: desc,
