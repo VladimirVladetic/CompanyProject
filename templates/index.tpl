@@ -19,7 +19,7 @@
         <form id="login-form" method="post" action="index.php" class="login-form-container">
             <input id="login-name" type="text" name="name" placeholder="Enter your name."/>
             <input id="login-password" type="password" name="password" placeholder="Enter your password."/>
-            <input id="login-button" type="submit" name="loginbtn" value="Login" onclick="enterLog()"/>
+            <input id="login-button" type="submit" name="loginbtn" value="Login"/>
         </form>
 
     </div>

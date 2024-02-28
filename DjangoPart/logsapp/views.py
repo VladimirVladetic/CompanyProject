@@ -6,6 +6,7 @@ from .serializer import LogsSerializer
 from .models import Logs
 from rest_framework.decorators import action
 from rest_framework import status
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 class LogsViewSet(viewsets.ViewSet):
@@ -29,12 +30,19 @@ class LogsViewSet(viewsets.ViewSet):
     def create(self, request):
         title = request.data.get('title')
         desc = request.data.get('desc')
+        attempts = request.data.get('attempts')
 
         if title is None or title == "" or desc is None or desc == "":
             return Response({"error": "Title and desc are required."}, status=status.HTTP_400_BAD_REQUEST)
         
-        log = Logs(title=title, desc=desc)
-        log.save()
+        log = Logs(title=title, desc=desc, attempts=attempts)
+
+        try:
+            log.full_clean()
+        except ValidationError as e:
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+        else:
+            log.save()
 
         serializer = LogsSerializer(log)
         

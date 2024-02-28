@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 11:46:41
+/* Smarty version 4.3.4, created on 2024-02-28 14:30:55
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d8779179a3e8_95617730',
+  'unifunc' => 'content_65df358f60f098_29134704',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a70fe0231a3571fc2eaa49850d9e479d44d3a04d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\index.tpl',
-      1 => 1708685193,
+      1 => 1709127053,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d8779179a3e8_95617730 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65df358f60f098_29134704 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,8 +48,13 @@ function content_65d8779179a3e8_95617730 (Smarty_Internal_Template $_smarty_tpl)
         <form id="login-form" method="post" action="index.php" class="login-form-container">
             <input id="login-name" type="text" name="name" placeholder="Enter your name."/>
             <input id="login-password" type="password" name="password" placeholder="Enter your password."/>
-            <input id="login-button" type="submit" name="loginbtn" value="Login" onclick="enterLog()"/>
+            <input id="login-button" type="submit" name="loginbtn" value="Login"/>
         </form>
+
+        <div id="attemptsdiv" data-value=<?php echo $_smarty_tpl->tpl_vars['attempts']->value;?>
+></div>
+        <p><?php echo $_smarty_tpl->tpl_vars['attempts']->value;?>
+</p>
 
     </div>
 
