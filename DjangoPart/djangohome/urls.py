@@ -16,14 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from logsapp.views import LogsViewSet
+from logsapp.views import LogsViewSet, LogsStatisticsViewSet
 from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
+logsrouter = DefaultRouter()
+statisticsrouter = DefaultRouter()
 
-router.register("", LogsViewSet, basename="logs")
+logsrouter.register("", LogsViewSet, basename="logs")
+statisticsrouter.register("", LogsStatisticsViewSet, basename="statistics")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('logs/', include(router.urls)),
+    path('logs/', include(logsrouter.urls)),
+    path('statistics/', include(statisticsrouter.urls)),
 ]
