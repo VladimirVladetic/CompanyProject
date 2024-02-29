@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 08:57:32
+/* Smarty version 4.3.4, created on 2024-02-29 12:53:08
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\userList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d84fec33bca4_11340841',
+  'unifunc' => 'content_65e07024cd1ab4_28164871',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '38637ead1d2fa9080a15e3f0e31190a7cc0ebd4b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\userList.tpl',
-      1 => 1708675026,
+      1 => 1709207539,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,31 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d84fec33bca4_11340841 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65e07024cd1ab4_28164871 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/users.css">
+    <?php echo '<script'; ?>
+ src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="./js/enterLog.js" defer><?php echo '</script'; ?>
+>
     <title>User List</title>
 </head>
-<body>
+<body onload="enterLog(<?php echo $_smarty_tpl->tpl_vars['logsent']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['attempts']->value;?>
+)">
+
+    <p id="sessionname" data-value="<?php echo $_smarty_tpl->tpl_vars['sessionname']->value;?>
+">Hello <?php echo $_smarty_tpl->tpl_vars['sessionname']->value;?>
+</p>
 
     <div class="container">
     <img class="logo" src="./images/Atos-Symbol.png" alt="Atos logo"  width="200" height="100"> 

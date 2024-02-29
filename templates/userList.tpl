@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/users.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="./js/enterLog.js" defer></script>
     <title>User List</title>
 </head>
-<body>
+<body onload="enterLog({$logsent},{$attempts})">
+
+    <p id="sessionname" data-value="{$sessionname}">Hello {$sessionname}</p>
 
     <div class="container">
     <img class="logo" src="./images/Atos-Symbol.png" alt="Atos logo"  width="200" height="100"> 

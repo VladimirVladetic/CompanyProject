@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 08:43:05
+/* Smarty version 4.3.4, created on 2024-02-29 12:56:38
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\searchUserByID.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d84c89989859_01066542',
+  'unifunc' => 'content_65e070f6abdeb5_51024379',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02324fad1d5e4f8971ae967e05567c3ebcc6a442' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\searchUserByID.tpl',
-      1 => 1708674165,
+      1 => 1709207797,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d84c89989859_01066542 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65e070f6abdeb5_51024379 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +48,9 @@ function content_65d84c89989859_01066542 (Smarty_Internal_Template $_smarty_tpl)
     <input class="margins-needed" type="number" placeholder="Enter ID" id="id-number">
     <input class="margins-needed" id="searchbtn" type="submit" placeholder="Search" onclick="showSpinner()">
 
+    <form class="margins-needed" id="go-to-userlist" method="post" action="userList.php"> 
+        <tr><td><input type='submit' name='userlist' value='Go to user list'/></td></tr>
+    </form>
     </div>
 
 </body>
