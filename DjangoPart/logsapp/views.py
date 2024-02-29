@@ -40,10 +40,15 @@ class LogsViewSet(viewsets.ViewSet):
         try:
             log.full_clean()
         except ValidationError as e:
-            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response({"errors": "Invalid number of attempts."}, status=status.HTTP_406_NOT_ACCEPTABLE)
         else:
             log.save()
 
         serializer = LogsSerializer(log)
         
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class LogsStatisticsViewSet(viewsets.ViewSet):
+
+    def list(self, request):
+
