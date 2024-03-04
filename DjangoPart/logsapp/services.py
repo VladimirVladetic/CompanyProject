@@ -74,6 +74,9 @@ class LogsStatisticsService():
         querysetall = Logs.objects.all()
         queryset = querysetall.filter(desc__startswith=username)
 
+        max_attempts_log = queryset.order_by('-attempts').first()
+        min_attempts_log = queryset.order_by('attempts').first()
+
         attempts = 0
 
         for log in queryset:
@@ -81,7 +84,9 @@ class LogsStatisticsService():
 
         response_data = {
             'Total number of attempts for user': attempts,
-            'Average number of attempts per login': f"{(attempts / len(queryset)):.2f}"
+            'Average number of attempts per login': f"{(attempts / len(queryset)):.2f}",
+            'Least attempts per login': min_attempts_log.attempts,
+            'Most attempts per login': max_attempts_log.attempts,
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
