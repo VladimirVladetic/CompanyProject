@@ -20,21 +20,6 @@ class LogsService():
         serializer = LogsSerializer(log)
         return serializer.data
 
-    def createLog(self, title, desc, attempts):
-        
-        log = Logs(title=title, desc=desc, attempts=attempts)
-
-        try:
-            log.full_clean()
-        except ValidationError as e:
-            return Response({"errors": "Invalid number of attempts."}, status=status.HTTP_406_NOT_ACCEPTABLE)
-        else:
-            log.save()
-
-        serializer = LogsSerializer(log)
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 
 class LogsStatisticsService():
 
