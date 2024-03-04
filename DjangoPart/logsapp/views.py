@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .services import LogsStatisticsService, LogsService
 from datetime import time
+from .models import Logs
 
 # Create your views here.
 class LogsViewSet(viewsets.ViewSet):
@@ -40,4 +41,8 @@ class LogsStatisticsViewSet(viewsets.ViewSet):
         'Percentage of logs during non work hours': service.transformPercentage(service.getNonWorkingHoursLogs(start_time, end_time)),
         } 
         return Response(response_data)
+    
+    def retrieve(self, request, username=None):
+        service = LogsStatisticsService
+        return service.getAttemptsForUser(username)
 

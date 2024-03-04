@@ -28,5 +28,6 @@ statisticsrouter.register("", LogsStatisticsViewSet, basename="statistics")
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('logs/', include(logsrouter.urls)),
+    path('statistics/<str:username>/', LogsStatisticsViewSet.as_view({'get': 'retrieve'}), name='statistics-username'),
     path('statistics/', include(statisticsrouter.urls)),
 ]

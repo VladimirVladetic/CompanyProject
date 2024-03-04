@@ -11,14 +11,14 @@ class LogsService():
     def listLogs(self):
         queryset = Logs.objects.all()
         serializer = LogsSerializer(queryset, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieveLog(self, pk):
         if pk is None:
             return Response({"errors": "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
         log = get_object_or_404(Logs, pk=pk)
         serializer = LogsSerializer(log)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def createLog(self, title, desc, attempts):
         if title is None or title == "" or desc is None or desc == "":
@@ -69,3 +69,19 @@ class LogsStatisticsService():
         querysetall = Logs.objects.all()
         queryset = [log for log in querysetall if start_time <= log.time.time() <= end_time]
         return ((querysetall.count() - len(queryset)) / querysetall.count())
+    
+    def getAttemptsForUser(username):
+        querysetall = Logs.objects.all()
+        queryset = querysetall.filter(desc__startswith=username)
+
+        attempts = 0
+
+        for log in queryset:
+            attempts += log.attempts
+
+        response_data = {
+            'Total number of attempts for user': attempts,
+            'Average number of attempts per login': f"{(attempts / len(queryset)):.2f}"
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
