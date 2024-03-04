@@ -2,6 +2,9 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .services import LogsStatisticsService, LogsService
 from datetime import time
+from rest_framework import status
+from django.core.exceptions import ValidationError
+from .serializer import LogsSerializer
 from .models import Logs
 
 # Create your views here.
@@ -10,21 +13,34 @@ class LogsViewSet(viewsets.ViewSet):
     # @action(detail=False, methods=['get'])
     def list(self, request):
         service = LogsService()
-        return service.listLogs()
+        return Response(service.listLogs(), status=status.HTTP_200_OK)
     
     # @action(detail=True, methods=['get'])
     def retrieve(self, request, pk=None):
         service = LogsService()
-        return service.retrieveLog(pk)
+        return Response(service.retrieveLog(pk), status=status.HTTP_200_OK)
     
     # @action(detail=False, methods=['post'])
     def create(self, request):
         title = request.data.get('title')
         desc = request.data.get('desc')
         attempts = request.data.get('attempts')
-        service = LogsService()
+
+        if title is None or title == "" or desc is None or desc == "":
+            return Response({"error": "Title and desc are required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        log = Logs(title=title, desc=desc, attempts=attempts)
+
+        try:
+            log.full_clean()
+        except ValidationError as e:
+            return Response({"errors": "Invalid number of attempts."}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        else:
+            log.save()
+
+        serializer = LogsSerializer(log)
         
-        return service.createLog(title,desc,attempts)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class LogsStatisticsViewSet(viewsets.ViewSet):  
 
@@ -44,5 +60,6 @@ class LogsStatisticsViewSet(viewsets.ViewSet):
     
     def retrieve(self, request, username=None):
         service = LogsStatisticsService
-        return service.getAttemptsForUser(username)
+        response_data = service.getAttemptsForUser(username)
+        return Response(response_data, status=status.HTTP_200_OK)
 

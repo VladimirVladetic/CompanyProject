@@ -11,18 +11,16 @@ class LogsService():
     def listLogs(self):
         queryset = Logs.objects.all()
         serializer = LogsSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return serializer.data
 
     def retrieveLog(self, pk):
         if pk is None:
             return Response({"errors": "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
         log = get_object_or_404(Logs, pk=pk)
         serializer = LogsSerializer(log)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return serializer.data
 
     def createLog(self, title, desc, attempts):
-        if title is None or title == "" or desc is None or desc == "":
-            return Response({"error": "Title and desc are required."}, status=status.HTTP_400_BAD_REQUEST)
         
         log = Logs(title=title, desc=desc, attempts=attempts)
 
@@ -89,4 +87,4 @@ class LogsStatisticsService():
             'Most attempts per login': max_attempts_log.attempts,
         }
 
-        return Response(response_data, status=status.HTTP_200_OK)
+        return response_data
