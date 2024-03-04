@@ -58,8 +58,8 @@ class LogsStatisticsViewSet(viewsets.ViewSet):
 
     def list(self, request):
         querysetall = Logs.objects.all()
-        start_time = time(8, 0)
-        end_time = time(16, 0)
+        start_time = time(7, 0)
+        end_time = time(15, 0)
 
         queryset1 = Logs.objects.all().filter(time__year=datetime.now().year)
         logs2024 = (queryset1.count() / querysetall.count())
