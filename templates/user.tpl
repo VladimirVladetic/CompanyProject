@@ -37,7 +37,7 @@
             <tr><td>Name: {if isset($name)} {$name} {/if}</td></tr>
             <tr><td>Surname: {if isset($surname)} {$surname} {/if}</td></tr>
             <tr><td>Year of birth: {if isset($yearofbirth)} {$yearofbirth} {/if}</td></tr>
-            <tr><td>Password: Hidden</td></tr>
+            {* <tr><td>Password: Hidden</td></tr> *}
             <tr><td>Company: {if isset($companyname)} {$companyname} {/if}</td></tr>
             <tr><td>{if isset($role)} Role: {$role} {/if} </td></tr>
         {/if}

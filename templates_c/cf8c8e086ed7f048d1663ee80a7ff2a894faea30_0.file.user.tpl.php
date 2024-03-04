@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-02-23 09:37:25
+/* Smarty version 4.3.4, created on 2024-03-04 12:44:27
   from 'C:\xampp\htdocs\smarty-4.3.4\CompanyProject\templates\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_65d85945143b58_41196299',
+  'unifunc' => 'content_65e5b41b0b2a81_04565241',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cf8c8e086ed7f048d1663ee80a7ff2a894faea30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\smarty-4.3.4\\CompanyProject\\templates\\user.tpl',
-      1 => 1708677395,
+      1 => 1709552661,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65d85945143b58_41196299 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65e5b41b0b2a81_04565241 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,8 +77,7 @@ function content_65d85945143b58_41196299 (Smarty_Internal_Template $_smarty_tpl)
  <?php }?></td></tr>
             <tr><td>Year of birth: <?php if ((isset($_smarty_tpl->tpl_vars['yearofbirth']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['yearofbirth']->value;?>
  <?php }?></td></tr>
-            <tr><td>Password: Hidden</td></tr>
-            <tr><td>Company: <?php if ((isset($_smarty_tpl->tpl_vars['companyname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['companyname']->value;?>
+                        <tr><td>Company: <?php if ((isset($_smarty_tpl->tpl_vars['companyname']->value))) {?> <?php echo $_smarty_tpl->tpl_vars['companyname']->value;?>
  <?php }?></td></tr>
             <tr><td><?php if ((isset($_smarty_tpl->tpl_vars['role']->value))) {?> Role: <?php echo $_smarty_tpl->tpl_vars['role']->value;?>
  <?php }?> </td></tr>
