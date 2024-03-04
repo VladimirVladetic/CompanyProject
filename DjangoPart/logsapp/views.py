@@ -1,10 +1,6 @@
-from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .serializer import LogsSerializer
-from .models import Logs
 from .services import LogsStatisticsService, LogsService
-from rest_framework import status
 from datetime import time
 
 # Create your views here.
