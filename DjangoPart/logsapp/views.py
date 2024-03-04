@@ -9,6 +9,11 @@ from django.core.exceptions import ValidationError
 from datetime import time, datetime
 from django.db.models import Q
 
+def transformPercentage(logs):
+        logs *= 100
+        logs = f"{logs:.2f}%"
+        return logs
+
 # Create your views here.
 class LogsViewSet(viewsets.ViewSet):
 
@@ -56,37 +61,26 @@ class LogsStatisticsViewSet(viewsets.ViewSet):
         start_time = time(8, 0)
         end_time = time(16, 0)
 
-        
         queryset1 = Logs.objects.all().filter(time__year=datetime.now().year)
         logs2024 = (queryset1.count() / querysetall.count())
-        logs2024 *= 100
-        logs2024 = f"{logs2024:.2f}%"
 
         queryset2 = [log for log in querysetall if log.time.month == 2]
         logsfebruary = (len(queryset2) / querysetall.count())
-        logsfebruary *= 100
-        logsfebruary = f"{logsfebruary:.2f}%"
 
         queryset3 = [log for log in querysetall if log.time.month == 3]
         logsmarch = (len(queryset3) / querysetall.count())
-        logsmarch *= 100
-        logsmarch = f"{logsmarch:.2f}%"
 
         queryset4 = [log for log in querysetall if start_time <= log.time.time() <= end_time]
         logsworkhours = (len(queryset4) / querysetall.count())
-        logsworkhours *= 100
-        logsworkhours = f"{logsworkhours:.2f}%"
 
         logsnotworkhours = ((querysetall.count() - len(queryset4)) / querysetall.count())
-        logsnotworkhours *= 100
-        logsnotworkhours = f"{logsnotworkhours:.2f}%"
             
         response_data = {
-        'Percentage of logs in 2024': logs2024,
-        'Percentage of logs in February': logsfebruary,
-        'Percentage of logs in March': logsmarch,
-        'Percentage of logs during work hours': logsworkhours,
-        'Percentage of logs during non work hours': logsnotworkhours,
+        'Percentage of logs in 2024': transformPercentage(logs2024),
+        'Percentage of logs in February': transformPercentage(logsfebruary),
+        'Percentage of logs in March': transformPercentage(logsmarch),
+        'Percentage of logs during work hours': transformPercentage(logsworkhours),
+        'Percentage of logs during non work hours': transformPercentage(logsnotworkhours),
         } 
         return Response(response_data)
 
