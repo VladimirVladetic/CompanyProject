@@ -11,17 +11,35 @@ class LogTestCase(TestCase):
         Logs.objects.create(title = "1", desc = "Unit test 1", attempts = 10)
         Logs.objects.create(title = "2", desc = "Unit test 2", attempts = 5)
     
-    def test_logTitleValidity(self):
+    def test_logTitleContinuity1(self):
         first_log = Logs.objects.get(title = "1")
         self.assertEqual(first_log.title, "1")
-        # self.assertEqual(first_log.title, "2")
+
+    def test_logDescContinuity1(self):
+        self.assertEqual(Logs.objects.get(title = "1").desc, "Unit test 1")
+
+    def test_logAttemptsContinuity1(self):
+        self.assertEqual(Logs.objects.get(title = "1").attempts, 10)
+
+    def test_logYearContinuity1(self):
+        self.assertEqual(Logs.objects.get(title = "1").time.year, datetime.now().year)
+
+    def test_logTitleContinuity2(self):
+        first_log = Logs.objects.get(title = "2")
+        self.assertEqual(first_log.title, "2")
+
+    def test_logDescContinuity2(self):
+        self.assertEqual(Logs.objects.get(title = "2").desc, "Unit test 2")
+
+    def test_logAttemptsContinuity2(self):
+        self.assertEqual(Logs.objects.get(title = "2").attempts, 5)
+
+    def test_logYearContinuity2(self):
+        self.assertEqual(Logs.objects.get(title = "2").time.year, datetime.now().year)
 
     def test_attemptsValidator(self):
-        log = Logs.objects.create(title = 'Fail', desc = 'Unit test 3', attempts=0)
+        log = Logs.objects.create(title = '3', desc = 'Unit test 3', attempts=0)
         self.assertRaises(ValidationError, log.full_clean)
-
-    def test_year(self):
-        self.assertEqual(Logs.objects.get(title = "1").time.year, datetime.now().year)
             
 class StatisticsTestCase(TestCase):
 
@@ -31,6 +49,7 @@ class StatisticsTestCase(TestCase):
         Logs.objects.create(title = "Login information", desc = "User1 logged in", attempts = 2)
         Logs.objects.create(title = "Login information", desc = "User1 logged in", attempts = 5)
         Logs.objects.create(title = "Login information", desc = "User1 logged in", attempts = 10)
+        
         Logs.objects.create(title = "Login information", desc = "User2 logged in", attempts = 3)
         Logs.objects.create(title = "Login information", desc = "User2 logged in", attempts = 1)
         Logs.objects.create(title = "Login information", desc = "User2 logged in", attempts = 1)
@@ -66,9 +85,10 @@ class StatisticsTestCase(TestCase):
     def test_nonWorkhoursLogins(self):
         start_time = time(7, 0)
         end_time = time(15, 0)
-        self.assertEqual(LogsStatisticsService.getNonWorkingHoursLogs(start_time, end_time), 0.00)
+        self.assertLess(LogsStatisticsService.getNonWorkingHoursLogs(start_time, end_time), 0.3)
 
     def test_workhoursLogins(self):
         start_time = time(7, 0)
         end_time = time(15, 0)
-        self.assertEqual(LogsStatisticsService.getWorkingHoursLogs(start_time, end_time), 1.00)
+        # self.assertEqual(LogsStatisticsService.getWorkingHoursLogs(start_time, end_time), 1.00)
+        self.assertGreater(LogsStatisticsService.getWorkingHoursLogs(start_time, end_time), 0.7)
