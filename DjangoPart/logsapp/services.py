@@ -6,21 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ValidationError
 
-class LogsService():
-
-    def listLogs(self):
-        queryset = Logs.objects.all()
-        serializer = LogsSerializer(queryset, many=True)
-        return serializer.data
-
-    def retrieveLog(self, pk):
-        if pk is None:
-            return Response({"errors": "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
-        log = get_object_or_404(Logs, pk=pk)
-        serializer = LogsSerializer(log)
-        return serializer.data
-
-
 class LogsStatisticsService():
 
     def transformPercentage(logs):

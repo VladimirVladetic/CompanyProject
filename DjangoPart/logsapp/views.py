@@ -1,6 +1,7 @@
 from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from .services import LogsStatisticsService, LogsService
+from .services import LogsStatisticsService
 from datetime import time
 from rest_framework import status
 from django.core.exceptions import ValidationError
@@ -12,13 +13,17 @@ class LogsViewSet(viewsets.ViewSet):
 
     # @action(detail=False, methods=['get'])
     def list(self, request):
-        service = LogsService()
-        return Response(service.listLogs(), status=status.HTTP_200_OK)
+        queryset = Logs.objects.all()
+        serializer = LogsSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     # @action(detail=True, methods=['get'])
     def retrieve(self, request, pk=None):
-        service = LogsService()
-        return Response(service.retrieveLog(pk), status=status.HTTP_200_OK)
+        if pk is None:
+            return Response({"errors": "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
+        log = get_object_or_404(Logs, pk=pk)
+        serializer = LogsSerializer(log)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     # @action(detail=False, methods=['post'])
     def create(self, request):
