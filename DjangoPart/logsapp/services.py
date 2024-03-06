@@ -1,10 +1,5 @@
-from .serializer import LogsSerializer
-from django.shortcuts import get_object_or_404
 from .models import Logs
 from datetime import datetime
-from rest_framework.response import Response
-from rest_framework import status
-from django.core.exceptions import ValidationError
 
 class LogsStatisticsService():
 
